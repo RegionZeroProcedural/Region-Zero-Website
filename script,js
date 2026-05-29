@@ -1,0 +1,34 @@
+fetch("videos.json")
+  .then(r => r.json())
+  .then(videos => {
+
+    const grid = document.getElementById("tiktok-grid");
+
+    videos.forEach(id => {
+
+      const embed = document.createElement("blockquote");
+
+      embed.className = "tiktok-embed";
+      embed.setAttribute(
+        "cite",
+        `https://www.tiktok.com/@region_zero/video/${id}`
+      );
+
+      embed.setAttribute("data-video-id", id);
+
+      embed.innerHTML =
+        `<a href="https://www.tiktok.com/@region_zero/video/${id}">
+            Watch on TikTok
+        </a>`;
+
+      grid.appendChild(embed);
+
+    });
+
+    const script = document.createElement("script");
+    script.src = "https://www.tiktok.com/embed.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+
+  });
