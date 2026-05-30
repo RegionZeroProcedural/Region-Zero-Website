@@ -29,7 +29,12 @@ body {
     color: #00b7ff;
     font-size: 30pt;
     font-weight: bold;
-    background: #222;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(40,40,40,.96),
+            rgba(10,10,10,.99)
+        );
     padding: 3px;
     padding-left: 8px;
     padding-right:8px;
@@ -48,6 +53,12 @@ body {
         0 0 20px #00b7ffaa,
         0 0 40px #00b7ff66;
     color:#00ddff
+    background:
+        linear-gradient(
+            180deg,
+            rgba(60,60,60,.96),
+            rgba(12,12,12,.99)
+        );
 }
 
 .site-header a {
@@ -115,7 +126,7 @@ body {
 }
 
 .hero {
-    padding: 40px 20px 80px;
+    padding: 40px 20px 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -227,16 +238,36 @@ textarea {
 
 .aboutDev,
 .feature-card {
-    background: #111;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(20,20,20,.96),
+            rgba(8,8,8,.99)
+        );
     padding: 30px;
     border-radius: 10px;
     border: 1px solid #222;
     text-align: center;
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.feature-card:hover,
+.aboutDev:hover {
+    transform: scale(1.035) translateY(-4px);
+    border-color: #00b7ff;
+
+    box-shadow:
+        0 0 10px rgba(0,183,255,.2),
+        0 0 25px rgba(0,183,255,.12);
 }
 
 .aboutDev {
     width: calc(100% - 50px);
     margin: 0 auto;
+    max-width: 50%;
 }
 
 .feature-card p {
@@ -331,16 +362,45 @@ textarea {
 }
 
 .aboutSection {
+    position: relative;
+
     max-width: 1000px;
-    margin: 60px auto;
+
+    width: calc(100% - 50px);
+
+    margin: 50px auto;
+
     padding: 30px;
 
-    background: #111;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(20,20,20,.96),
+            rgba(8,8,8,.99)
+        );
 
     border: 1px solid #333;
-    border-radius: 10px;
-    width: calc(100% - 50px);
-    margin: 50px auto;
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    transform-style: preserve-3d;
+    will-change: transform;
+
+    transition:
+        transform .15s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.aboutSection:hover {
+    transform: translateY(-3px) scale(1.03);
+
+    border-color: #00b7ff;
+
+    box-shadow:
+        0 0 10px rgba(0,183,255,.15),
+        0 0 25px rgba(0,183,255,.08);
 }
 
 .aboutSection:first-of-type {
@@ -361,10 +421,28 @@ textarea {
 
     padding: 30px;
 
-    background: #111;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(20,20,20,.96),
+            rgba(8,8,8,.99)
+        );
 
     border: 1px solid #333;
     border-radius: 10px;
+
+    transition:
+        transform .15s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.updateCard:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow:
+        0 0 10px rgba(0,183,255,.15),
+        0 0 25px rgba(0,183,255,.08);
+    border-color: #00b7ff;
 }
 
 .updateCard h2 {
@@ -439,7 +517,12 @@ textarea {
 
 .contactCard input,
 .contactCard textarea {
-    background: #111;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10,10,10,.96),
+            rgba(20,20,20,.99)
+        );
     color: white;
 
     border: 1px solid #444;
@@ -450,6 +533,27 @@ textarea {
     transition:
         border-color .25s ease,
         box-shadow .25s ease;
+}
+
+.contactCard {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(30,30,30,.96),
+            rgba(10,10,10,.99)
+        );
+    transition:
+        transform .15s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.contactCard:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow:
+        0 0 10px rgba(0,183,255,.15),
+        0 0 25px rgba(0,183,255,.08);
+    border-color: #00b7ff;
 }
 
 .contactCard input:hover,
@@ -492,10 +596,28 @@ textarea {
     margin: 40px auto;
     padding: 30px;
 
-    background: #111;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(20,20,20,.96),
+            rgba(8,8,8,.99)
+        );
 
     border: 1px solid #333;
     border-radius: 10px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.downloadCard:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow:
+        0 0 10px rgba(0,183,255,.15),
+        0 0 25px rgba(0,183,255,.08);
+    border-color: #00b7ff;
 }
 
 .downloadCard h2 {
@@ -520,8 +642,12 @@ textarea {
 .infoBox {
     flex: 1;
 
-    background: #1a1a1a;
-
+    background:
+        linear-gradient(
+            180deg,
+            rgba(15,15,15,.96),
+            rgba(30,30,30,.99)
+        );
     padding: 20px;
 
     border-radius: 8px;
@@ -682,7 +808,12 @@ textarea {
 
     padding: 25px;
 
-    background: #111;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(20,20,20,.96),
+            rgba(8,8,8,.99)
+        );
 
     border: 1px solid #333;
     border-radius: 10px;
@@ -693,12 +824,11 @@ textarea {
 }
 
 .threadCard:hover {
-    border-color: #00b7ff;
-
+    transform: translateY(-3px) scale(1.03);
     box-shadow:
-        0 0 15px rgba(0,183,255,.25);
-
-    transform: translateY(-3px);
+        0 0 10px rgba(0,183,255,.15),
+        0 0 25px rgba(0,183,255,.08);
+    border-color: #00b7ff;
 }
 
 .threadInfo h2 {
@@ -722,7 +852,12 @@ textarea {
 
 .forumPost,
 .forumReply {
-    background: #111;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(20,20,20,.96),
+            rgba(8,8,8,.99)
+        );
 
     border: 1px solid #333;
     border-radius: 10px;
@@ -730,6 +865,20 @@ textarea {
     padding: 25px;
 
     margin-bottom: 25px;
+
+    transition: 
+        transform .15s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+}
+
+.forumPost:hover,
+.forumReply:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow:
+        0 0 10px rgba(0,183,255,.15),
+        0 0 25px rgba(0,183,255,.08);
+    border-color: #00b7ff;
 }
 
 .postAuthor {
@@ -834,10 +983,11 @@ textarea {
 
 /* Hover effects */
 .forumCard:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow:
+        0 0 10px rgba(0,183,255,.15),
+        0 0 25px rgba(0,183,255,.08);
     border-color: #00b7ff;
-    box-shadow: 0 0 8px rgba(0,183,255,.25),
-                0 0 20px rgba(0,183,255,.12),
-                0 0 40px rgba(0,183,255,.05);
 }
 
 .forumCard:hover::before,
@@ -881,10 +1031,28 @@ textarea {
 
     padding: 30px;
 
-    background: #111;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(20,20,20,.96),
+            rgba(8,8,8,.99)
+        );
 
     border: 1px solid #333;
     border-radius: 12px;
+
+    transition:
+        transform .15s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+}
+
+.newThreadCard:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow:
+        0 0 10px rgba(0,183,255,.15),
+        0 0 25px rgba(0,183,255,.08);
+    border-color: #00b7ff;
 }
 
 .newThreadCard h2 {
@@ -900,7 +1068,12 @@ textarea {
 
     margin-bottom: 15px;
 
-    background: #0a0a0a;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10,10,10,.96),
+            rgba(20,20,20,.99)
+        );
 
     border: 1px solid #333;
     border-radius: 8px;
@@ -908,6 +1081,22 @@ textarea {
     color: white;
 
     font-size: 1rem;
+}
+
+.threadTextarea:hover,
+.threadInput:hover {
+    border-color: #00b7ff;
+}
+
+.threadTextarea:focus,
+.threadInput:focus {
+    outline: none;
+
+    border-color: #00b7ff;
+
+    box-shadow:
+        0 0 6px rgba(0,183,255,.55),
+        0 0 15px rgba(0,183,255,.25);
 }
 
 .threadTextarea {
@@ -919,7 +1108,12 @@ textarea {
 
     padding: 15px;
 
-    background: #0a0a0a;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10,10,10,.96),
+            rgba(20,20,20,.99)
+        );
 
     border: 1px solid #333;
     border-radius: 8px;
