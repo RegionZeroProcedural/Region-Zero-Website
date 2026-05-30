@@ -492,7 +492,7 @@ textarea:hover {
     text-decoration: none;
     transition: 0.2s;
 }
-
+.forumPostPreview:hover,
 .forumCard:hover {
     border-color: #00b7ff;
     box-shadow: 0 0 20px rgba(0,183,255,.2);
@@ -516,33 +516,200 @@ textarea:hover {
 }
 
 .forumPostPreview {
-    max-width: 1000px;
-    margin: 50px auto;
-    padding: 30px;
+    display: block;
+
     background: #111;
+
     border: 1px solid #333;
-    border-radius: 10px;
-    width: calc(100% - 50px);
-    margin: 50px auto;
+    border-radius: 12px;
+
+    padding: 30px;
+
+    text-decoration: none;
+
+    transition: .2s;
+
+    width: min(1200px, calc(100% - 50px));
+
+    margin: 75px auto;
+}
+
+.forumPostPreview:hover {
+    transform: translateY(-4px);
+
+    border-color: #00b7ff;
+
+    box-shadow:
+        0 0 20px rgba(0,183,255,.25);
 }
 
 .forumPostPreview h2 {
     color: #00b7ff;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .thread {
-    padding: 20px 0;
-    border-top: 1px solid #333;
+    padding: 20px;
+
+    border: 1px solid #222;
+    border-radius: 8px;
+
+    margin-bottom: 15px;
+
+    background: #0a0a0a;
+}
+
+.thread:last-child {
+    margin-bottom: 0;
 }
 
 .thread h3 {
     color: white;
+    margin-bottom: 8px;
 }
 
 .thread p {
     color: #aaa;
-    margin-top: 8px;
+}
+
+/**************** Forums *****************/
+.forumCategory {
+    width: min(1000px, calc(100% - 50px));
+    margin: 75px auto;
+}
+
+.threadList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.threadCard {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 25px;
+
+    background: #111;
+
+    border: 1px solid #333;
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    transition: .2s;
+}
+
+.threadCard:hover {
+    border-color: #00b7ff;
+
+    box-shadow:
+        0 0 15px rgba(0,183,255,.25);
+
+    transform: translateY(-3px);
+}
+
+.threadInfo h2 {
+    color: #00b7ff;
+}
+
+.threadInfo p {
+    color: #aaa;
+    margin-top: 10px;
+}
+
+.threadMeta {
+    color: white;
+    align-self: center;
+}
+
+.threadPage {
+    width: min(1000px, calc(100% - 50px));
+    margin: 75px auto;
+}
+
+.forumPost,
+.forumReply {
+    background: #111;
+
+    border: 1px solid #333;
+    border-radius: 10px;
+
+    padding: 25px;
+
+    margin-bottom: 25px;
+}
+
+.postAuthor {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.postAuthor img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.postContent {
+    color: #ccc;
+    line-height: 1.8;
+}
+
+.forumGrid {
+    width: min(1200px, calc(100% - 50px));
+
+    margin: 75px auto;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+    gap: 30px;
+}
+
+.forumCard {
+    background: #111;
+
+    border: 1px solid #333;
+    border-radius: 12px;
+
+    padding: 30px;
+
+    text-decoration: none;
+
+    transition: .2s;
+}
+
+.forumCard:hover {
+    transform: translateY(-4px);
+
+    border-color: #00b7ff;
+
+    box-shadow:
+        0 0 20px rgba(0,183,255,.25);
+}
+
+.forumCard h2 {
+    color: #00b7ff;
+
+    margin-bottom: 15px;
+}
+
+.forumCard p {
+    color: #aaa;
+
+    margin-bottom: 25px;
+
+    line-height: 1.6;
+}
+
+.forumCard span {
+    color: white;
+
+    font-weight: bold;
 }
 
 footer {
