@@ -29,6 +29,25 @@ body {
     color: #00b7ff;
     font-size: 30pt;
     font-weight: bold;
+    background: #222;
+    padding: 3px;
+    padding-left: 8px;
+    padding-right:8px;
+    border-radius: 10px;
+    border: 1px solid #444;
+
+    transition:
+        color .25s ease,
+        box-shadow .25s ease;
+}
+
+.logo:hover{
+    box-shadow:
+        0 0 5px #00b7ff22,
+        0 0 10px #00b7ff55,
+        0 0 20px #00b7ffaa,
+        0 0 40px #00b7ff66;
+    color:#00ddff
 }
 
 .site-header a {
@@ -39,16 +58,55 @@ body {
     display: flex;
     font-size: 16pt;
     gap: 25px;
+    transition:
+        text-shadow .25s ease,
+        color .25s ease;
+}
+
+.navbar a {
+    color: #ccc;
+
+    transition:
+        color .25s ease,
+        text-shadow .25s ease;
+}
+
+.navbar a:hover {
+    color: white;
+}
+
+.navbarText {
+    display: inline-block;
 }
 
 .navbarText:hover {
+    animation: navBounce .4s ease;
+
     text-shadow:
-        0 0 5px #00b7cc00,
-        0 0 10px #00b7ff44,
-        0 0 20px #00b7ff88,
-        0 0 40px #00b7ffbb,
-        0 0 80px #00b7ffff;
-    margin: 0;
+        0 0 5px #00b7ff22,
+        0 0 10px #00b7ff55,
+        0 0 20px #00b7ffaa,
+        0 0 40px #00b7ff66;
+}
+
+@keyframes navBounce {
+
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.08) translateY(-4px);
+    }
+
+    60% {
+        transform: scale(.98);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
 }
 
 .navbar a {
@@ -102,6 +160,9 @@ body {
     color: white;
     text-decoration: none;
     border-radius: 8px;
+    transition:
+        color .25s ease,
+        box-shadow .25s ease;
 }
 
 .btn2 {
@@ -113,6 +174,9 @@ body {
     text-decoration: none;
     border-radius: 8px;
     border: 0px solid transparent;
+    transition:
+        color .25s ease,
+        box-shadow .25s ease;
 }
 
 .features {
@@ -150,15 +214,15 @@ textarea {
     padding: 10px;
 }
 
-input:focus,
-textarea:focus {
+.contactCard input:focus,
+.contactCard textarea:focus {
     outline: none;
 
     border-color: #00b7ff;
 
     box-shadow:
-        0 0 5px #00b7ff,
-        0 0 10px rgba(0,183,255,.5);
+        0 0 6px rgba(0,183,255,.55),
+        0 0 15px rgba(0,183,255,.25);
 }
 
 .aboutDev,
@@ -220,11 +284,10 @@ textarea:focus {
 .contactCard {
     border: 1px solid #aaa;
     border-radius: 10px;
-    background:#222;
+    background: #222;
     padding: 10px;
     width: fit-content;
     margin: 40px auto;
-    gap: 12px;
     max-width: 900px;
 }
 
@@ -360,11 +423,6 @@ textarea:focus {
     }
 }
 
-.contactCard input:hover,
-textarea:hover {
-    border-color: #00b7ff;
-}
-
 .btn:hover,
 .btn2:hover {
     box-shadow:
@@ -374,13 +432,13 @@ textarea:hover {
 
 .formRow {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
     margin-bottom: 10px;
-    align-items: flex-start;
 }
 
-.contactCard input {
+.contactCard input,
+.contactCard textarea {
     background: #111;
     color: white;
 
@@ -388,6 +446,24 @@ textarea:hover {
     border-radius: 5px;
 
     padding: 5px;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.contactCard input:hover,
+.contactCard textarea:hover {
+    border-color: #00b7ff;
+
+    box-shadow:
+        0 0 4px rgba(0,183,255,.2);
+}
+
+.contactCard textarea {
+    width: 600px;
+    height: 250px;
+    padding: 10px;
 }
 
 .formRow label {
@@ -677,54 +753,118 @@ textarea:hover {
 
 .forumGrid {
     width: min(1200px, calc(100% - 50px));
-
     margin: 75px auto;
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-
     gap: 30px;
+
+    perspective: 1000px;
 }
 
+.forumGrid {
+    width: min(1200px, calc(100% - 50px));
+    margin: 75px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    perspective: 1200px;
+}
+
+/* Card base */
 .forumCard {
-    background: #111;
-
-    border: 1px solid #333;
-    border-radius: 12px;
-
+    position: relative;
+    overflow: hidden;
     padding: 30px;
 
+    background: linear-gradient(180deg, rgba(20,20,20,.96), rgba(8,8,8,.99));
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
     text-decoration: none;
 
-    transition: .2s;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform .12s ease, border-color .2s ease, box-shadow .2s ease;
 }
 
+/* Interior glow that follows the mouse */
+.forumCard::before {
+    content: "";
+    position: absolute;
+    inset: -75%;
+    background: radial-gradient(circle at var(--mouse-x,50%) var(--mouse-y,50%),
+        rgba(0,183,255,.10) 0%, rgba(0,183,255,.04) 18%, transparent 55%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .15s ease;
+}
+
+/* Border sheen + subtle bloom */
+.forumCard::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: radial-gradient(circle at var(--opposite-x,50%) var(--opposite-y,50%),
+        rgba(255,255,255,.65) 0%, rgba(0,183,255,.85) 15%, rgba(0,183,255,.35) 35%, transparent 60%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    filter: drop-shadow(0 0 6px rgba(0,183,255,.8))
+            drop-shadow(0 0 12px rgba(0,183,255,.45));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .15s ease;
+}
+
+/* Specular highlight on top of border */
+.forumCard .borderSpecular {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(ellipse 280px 180px at var(--opposite-x,50%) var(--opposite-y,35%),
+        rgba(255,255,255,.18) 0%, rgba(255,255,255,.08) 18%, rgba(255,255,255,.03) 35%, transparent 65%);
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity .15s ease;
+}
+
+/* Hover effects */
 .forumCard:hover {
-    transform: translateY(-4px);
-
     border-color: #00b7ff;
-
-    box-shadow:
-        0 0 20px rgba(0,183,255,.25);
+    box-shadow: 0 0 8px rgba(0,183,255,.25),
+                0 0 20px rgba(0,183,255,.12),
+                0 0 40px rgba(0,183,255,.05);
 }
 
+.forumCard:hover::before,
+.forumCard:hover::after,
+.forumCard:hover .borderSpecular {
+    opacity: 1;
+}
+
+/* Text styling */
 .forumCard h2 {
     color: #00b7ff;
-
     margin-bottom: 15px;
+    transition: text-shadow .15s ease;
+}
+
+.forumCard:hover h2 {
+    text-shadow: 0 0 8px rgba(0,183,255,.4), 0 0 20px rgba(0,183,255,.15);
 }
 
 .forumCard p {
     color: #aaa;
-
-    margin-bottom: 25px;
-
     line-height: 1.6;
+    margin-bottom: 25px;
 }
 
 .forumCard span {
     color: white;
-
     font-weight: bold;
 }
 

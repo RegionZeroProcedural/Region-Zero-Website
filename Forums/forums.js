@@ -369,3 +369,36 @@ function addReply() {
 
     loadThread();
 }
+
+document.querySelectorAll(".forumCard").forEach(card => {
+    card.addEventListener("mousemove", e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateY = ((x - centerX) / centerX) * 10;
+        const rotateX = ((centerY - y) / centerY) * 10;
+
+        const mouseX = (x / rect.width) * 100;
+        const mouseY = (y / rect.height) * 100;
+
+        card.style.transform = `translateY(-4px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+        card.style.setProperty("--mouse-x", `${mouseX}%`);
+        card.style.setProperty("--mouse-y", `${mouseY}%`);
+
+        card.style.setProperty("--opposite-x", `${100 - mouseX}%`);
+        card.style.setProperty("--opposite-y", `${100 - mouseY}%`);
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
+        card.style.removeProperty("--mouse-x");
+        card.style.removeProperty("--mouse-y");
+        card.style.removeProperty("--opposite-x");
+        card.style.removeProperty("--opposite-y");
+    });
+});
