@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,16 +10,14 @@
 <body>
 
 <header class="site-header">
-    <a href="../index.html" class="logoLink">
-        <div class="logo">REGION ZERO</div>
-    </a>
+    <a href="../index.html" class="logoLink"><div class="logo">REGION ZERO</div></a>
 
     <nav class="navbar">
         <a href="../index.html" class="navbarText">Home</a>
         <a href="../about.html" class="navbarText">About</a>
         <a href="../updates.html" class="navbarText">Updates</a>
         <a href="../download.html" class="navbarText">Download</a>
-        <a href="../forums.html" class="navbarText">Forums</a>
+        <a href="forums.html" class="navbarText">Forums</a>
         <a href="../contactUs.html" class="navbarText">Contact Us</a>
     </nav>
 </header>
@@ -29,50 +26,30 @@
 <hr>
 
 <section class="forumCategory">
-    <h1 class="aboutTitle">Feature Suggestions</h1>
+    <h1 id="categoryTitle" class="aboutTitle"></h1>
+    <p id="categoryDescription" class="updatesSubtitle"></p>
 
-    <p class="updatesSubtitle">
-        Suggest weapons, perks, regions, enemies, mechanics, and future content.
-    </p>
+    <section class="newThreadCard">
+        <h2>Create New Thread</h2>
 
-    <div class="threadList">
+        <input id="newThreadTitle" class="threadInput" type="text" placeholder="Thread Title">
 
-        <a href="thread.html" class="threadCard">
-            <div class="threadInfo">
-                <h2>Bump Stock Perk</h2>
-                <p>Turn semi-auto weapons into full-auto weapons.</p>
-            </div>
-            <div class="threadMeta">
-                <span>18 Replies</span>
-            </div>
-        </a>
+        <textarea id="newThreadContent" class="threadTextarea" placeholder="Describe your idea..."></textarea>
 
-        <a href="thread.html" class="threadCard">
-            <div class="threadInfo">
-                <h2>Slick Shells Upgrade</h2>
-                <p>Spent casings make zombies slip when enough pile up.</p>
-            </div>
-            <div class="threadMeta">
-                <span>22 Replies</span>
-            </div>
-        </a>
+        <button class="createThreadButton" onclick="createThread('suggestions')">
+            Create Thread
+        </button>
+    </section>
 
-        <a href="thread.html" class="threadCard">
-            <div class="threadInfo">
-                <h2>New Region Idea: Biohazard Quarantine</h2>
-                <p>A sealed containment wing with mutated enemy variants.</p>
-            </div>
-            <div class="threadMeta">
-                <span>11 Replies</span>
-            </div>
-        </a>
-
-    </div>
+    <div id="threadList" class="threadList"></div>
 </section>
 
 <footer>
     <p>© 2026 Region Zero. All Rights Reserved.</p>
 </footer>
+
+<script src="forums.js"></script>
+<script>loadCategory("suggestions");</script>
 
 </body>
 </html>

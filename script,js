@@ -1,34 +1,102 @@
-fetch("videos.json")
-  .then(r => r.json())
-  .then(videos => {
+// -----------------------------
+// TikTok embeds for homepage
+// -----------------------------
 
-    const grid = document.getElementById("tiktok-grid");
+const tiktokGrid = document.getElementById("tiktok-grid");
 
-    videos.forEach(id => {
+if (tiktokGrid) {
+    fetch("videos.json")
+        .then(response => response.json())
+        .then(videos => {
+            videos.forEach(id => {
+                const embed = document.createElement("blockquote");
 
-      const embed = document.createElement("blockquote");
+                embed.className = "tiktok-embed";
 
-      embed.className = "tiktok-embed";
-      embed.setAttribute(
-        "cite",
-        `https://www.tiktok.com/@region_zero/video/${id}`
-      );
+                embed.setAttribute(
+                    "cite",
+                    `https://www.tiktok.com/@region_zero/video/${id}`
+                );
 
-      embed.setAttribute("data-video-id", id);
+                embed.setAttribute("data-video-id", id);
 
-      embed.innerHTML =
-        `<a href="https://www.tiktok.com/@region_zero/video/${id}">
-            Watch on TikTok
-        </a>`;
+                embed.innerHTML = `
+                    <a href="https://www.tiktok.com/@region_zero/video/${id}">
+                        Watch on TikTok
+                    </a>
+                `;
 
-      grid.appendChild(embed);
+                tiktokGrid.appendChild(embed);
+            });
 
-    });
+            const tiktokScript = document.createElement("script");
+            tiktokScript.src = "https://www.tiktok.com/embed.js";
+            tiktokScript.async = true;
 
-    const script = document.createElement("script");
-    script.src = "https://www.tiktok.com/embed.js";
-    script.async = true;
+            document.body.appendChild(tiktokScript);
+        })
+        .catch(error => {
+            console.error("Could not load TikTok videos:", error);
+        });
+}
 
-    document.body.appendChild(script);
 
-  });
+// -----------------------------
+// Latest forum activity preview
+// -----------------------------
+
+const latestThreadsContainer = document.getElementById("latestThreads");
+
+if (latestThreadsContainer) {
+    loadLatestThreads();
+}
+
+async function loadLatestThreads() {
+    try {
+        const response = await fetch("Forums/forumData.json");
+
+        if (!response.ok) {
+            throw new Error("Could not load Forums/forumData.json");
+        }
+
+        const data = await response.json();
+
+        let allThreads = [];
+
+        Object.values(data.categories).forEach(category => {
+            category.threads.forEach(thread => {
+                allThreads.push({
+                    title: thread.title,
+                    preview: thread.preview
+                });
+            });
+        });
+
+        const latestThreads = allThreads.slice(0, 3);
+
+        latestThreadsContainer.innerHTML = "";
+
+        latestThreads.forEach(thread => {
+            const threadDiv = document.createElement("div");
+
+            threadDiv.className = "thread";
+
+            threadDiv.innerHTML = `
+                <h3>${thread.title}</h3>
+                <p>${thread.preview}</p>
+            `;
+
+            latestThreadsContainer.appendChild(threadDiv);
+        });
+
+    } catch (error) {
+        console.error("Could not load latest forum threads:", error);
+
+        latestThreadsContainer.innerHTML = `
+            <div class="thread">
+                <h3>Forum Activity Unavailable</h3>
+                <p>Could not load the latest forum threads.</p>
+            </div>
+        `;
+    }
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patch Discussion - Region Zero</title>
+    <title>Latest Forum Activity - Region Zero</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -26,22 +26,17 @@
 <hr>
 
 <section class="forumCategory">
-    <h1 id="categoryTitle" class="aboutTitle"></h1>
-    <p id="categoryDescription" class="updatesSubtitle"></p>
+    <h1 class="aboutTitle">Latest Forum Activity</h1>
 
-    <section class="newThreadCard">
-        <h2>Create New Thread</h2>
+    <p class="updatesSubtitle">
+        Browse every Region Zero forum thread, sorted from newest to oldest.
+    </p>
 
-        <input id="newThreadTitle" class="threadInput" type="text" placeholder="Thread Title">
+    <div id="latestForumList" class="threadList"></div>
 
-        <textarea id="newThreadContent" class="threadTextarea" placeholder="Discuss the latest update..."></textarea>
-
-        <button class="createThreadButton" onclick="createThread('patches')">
-            Create Thread
-        </button>
-    </section>
-
-    <div id="threadList" class="threadList"></div>
+    <button id="loadMoreThreads" class="btn2">
+        Load More Threads
+    </button>
 </section>
 
 <footer>
@@ -49,7 +44,7 @@
 </footer>
 
 <script src="forums.js"></script>
-<script>loadCategory("patches");</script>
+<script>loadLatestForumsPage();</script>
 
 </body>
 </html>
