@@ -11,7 +11,8 @@
 <header class="site-header">
     <a href="index.html"><div class="logo">REGION ZERO</div></a>
 
-    <nav class="navbar">
+    <button class="hamburger" id="hamburgerBtn">☰</button>
+    <nav class="navbar" id="navbar">
         <a href="index.html" class="navbarText">Home</a>
         <a href="about.html" class="navbarText">About</a>
         <a href="updates.html" class="navbarText">Updates</a>
@@ -119,6 +120,19 @@
 </footer>
 
 <script src="script.js"></script>
+
+<script>
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const navbar = document.getElementById("navbar");
+
+    hamburgerBtn.addEventListener("click", () => {
+        navbar.classList.toggle("active");
+
+        hamburgerBtn.textContent = navbar.classList.contains("active")
+            ? "✕"
+            : "☰";
+    });
+</script>
 
 </body>
 </html>

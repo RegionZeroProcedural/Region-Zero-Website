@@ -23,6 +23,7 @@ body {
 
     background: rgba(5,5,5,0.55);
     backdrop-filter: blur(8px);
+    position: relative, sticky;
 }
 
 .logo {
@@ -1167,4 +1168,262 @@ footer {
     padding: 40px;
     border-top: 1px solid #222;
     color: #777;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+/* Large Desktop */
+@media screen and (min-width: 1400px) {
+    .site-header {
+        position: sticky;
+    }
+
+    .hero h1 {
+        font-size: 6rem;
+    }
+
+    .feature-grid {
+        max-width: 1200px;
+    }
+
+    .forumGrid {
+        max-width: 1400px;
+    }
+}
+
+/* Tablet */
+@media screen and (max-width: 1024px) {
+
+    .site-header {
+        padding: 12px 25px;
+        flex-direction: column;
+        gap: 15px;
+        position: sticky;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        font-size: 14pt;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+        letter-spacing: 3px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .forumGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .downloadInfo {
+        flex-direction: column;
+    }
+
+    .aboutDev {
+        max-width: 90%;
+    }
+
+    textarea,
+    .contactCard textarea {
+        width: 100%;
+    }
+
+    .contactCard {
+        width: calc(100% - 40px);
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+
+    .site-header {
+        padding: 15px;
+        position: sticky;
+    }
+
+    .logo {
+        font-size: 20pt;
+        text-align: center;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        font-size: 12pt;
+    }
+
+    .hero {
+        padding: 30px 15px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .features {
+        padding: 50px 20px;
+    }
+
+    .aboutTitle,
+    .contactTitle,
+    .section-header h2 {
+        font-size: 2.5rem;
+    }
+
+    .aboutSection,
+    .updateCard,
+    .downloadCard,
+    .newThreadCard,
+    .forumCategory,
+    .threadPage {
+        width: calc(100% - 20px);
+        padding: 20px;
+    }
+
+    .feature-card,
+    .aboutDev {
+        padding: 20px;
+    }
+
+    .forumCard {
+        padding: 20px;
+    }
+
+    .threadCard {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .threadMeta {
+        align-self: flex-start;
+    }
+
+    .formRow {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .formRow label {
+        width: auto;
+    }
+
+    .contactCard input,
+    .contactCard textarea,
+    .threadInput,
+    .threadTextarea {
+        width: 100%;
+    }
+
+    .contactCard textarea {
+        height: 200px;
+    }
+
+    .tiktok-embed {
+        flex: 0 0 280px;
+    }
+}
+
+/* Small Phones */
+@media screen and (max-width: 480px) {
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .site-header {
+        position: sticky;
+    }
+
+    .logo {
+        font-size: 16pt;
+    }
+
+    .aboutTitle,
+    .contactTitle,
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .btn,
+    .btn2,
+    .downloadButton,
+    .createThreadButton {
+        width: 100%;
+        text-align: center;
+    }
+
+    .tiktok-embed {
+        flex: 0 0 240px;
+    }
+
+    .postAuthor {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .forumCard,
+    .feature-card,
+    .aboutSection,
+    .updateCard,
+    .downloadCard {
+        padding: 15px;
+    }
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: 1px solid #333;
+    color: white;
+    font-size: 2rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+
+    .site-header {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        position: sticky;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: scale(1.5) translateY(-30%) translateX(-35%);
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .navbar {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 20px 0;
+    }
+
+    .navbar.active {
+        display: flex;
+    }
 }
